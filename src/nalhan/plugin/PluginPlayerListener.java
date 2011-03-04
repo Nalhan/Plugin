@@ -5,9 +5,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.player.PlayerChatEvent;
 import org.bukkit.event.player.PlayerEvent;
+import org.bukkit.event.player.PlayerKickEvent;
 import org.bukkit.event.player.PlayerListener;
 import org.bukkit.event.player.PlayerMoveEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
+import org.bukkit.Server;
+import org.bukkit.command.CommandSender;
+
 
 /**
  * Handle events for all Player related events
@@ -20,7 +24,13 @@ public class PluginPlayerListener extends PlayerListener {
         plugin = instance;
     }
     
-    public void onPlayerRespawn(PlayerRespawnEvent event) {
+    public void onPlayerKick(PlayerKickEvent event) {
+    	Server server = plugin.getServer();
+    	Player player = event.getPlayer();
+    	System.out.println("Some idiot named" + player + " just got kicked!");
+    }
+    
+	public void onPlayerRespawn(PlayerRespawnEvent event) {
     	Player player = event.getPlayer();
     	player.sendMessage("You have respawned!");
     }

@@ -14,7 +14,7 @@ import org.bukkit.plugin.PluginManager;
 /**
  * Sample plugin for Bukkit
  *
- * @author Dinnerbone
+ * @author nalhan
  */
 public class Plugin extends JavaPlugin {
     private final PluginPlayerListener playerListener = new PluginPlayerListener(this);
@@ -41,15 +41,10 @@ public class Plugin extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvent(Event.Type.PLAYER_JOIN, playerListener, Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_QUIT, playerListener, Priority.Normal, this);
-        pm.registerEvent(Event.Type.PLAYER_COMMAND, playerListener, Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_MOVE, playerListener, Priority.Normal, this);
-        pm.registerEvent(Event.Type.BLOCK_PHYSICS, blockListener, Priority.Normal, this);
-        pm.registerEvent(Event.Type.BLOCK_CANBUILD, blockListener, Priority.Normal, this);
         pm.registerEvent(Event.Type.PLAYER_RESPAWN, playerListener, Priority.Normal, this);
         pm.registerEvent(Event.Type.BLOCK_INTERACT, blockListener, Priority.High, this);
         pm.registerEvent(Event.Type.BLOCK_RIGHTCLICKED, blockListener, Priority.High, this);
-        pm.registerEvent(Event.Type.REDSTONE_CHANGE, blockListener,Priority.Monitor, this);
-        pm.registerEvent(Event.Type.SIGN_CHANGE, blockListener, Priority.Monitor,this);
 
         // EXAMPLE: Custom code, here we just output some info so we can check all is well
         PluginDescriptionFile pdfFile = this.getDescription();
